@@ -8,12 +8,20 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+       // Step 1: Create an array of type double with size equal to 'length'.
+        // Step 2: Use a for loop to fill the array.
+        // Step 3: For each index i (starting from 0), compute the value: number * (i + 1)
+        // Step 4: Store this value in the array at position i.
+        // Step 5: After the loop ends, return the array.
 
-        return []; // replace this return statement with your own
+        double[] result = new double[length];
+
+        for (int i = 0; i < length; i++)
+        {
+            result[i] = number * (i + 1);
+        }
+
+        return result;
     }
 
     /// <summary>
@@ -25,9 +33,27 @@ public static class Arrays
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Step 1: Confirm that amount is between 1 and data.Count (it's guaranteed by instructions).
+        // Step 2: Calculate how many items to move to the front → this is (data.Count - amount)
+        // Step 3: Use GetRange to get the last 'amount' elements from the list.
+        // Step 4: Use GetRange to get the first (data.Count - amount) elements.
+        // Step 5: Clear the original list.
+        // Step 6: Add the last part first (rotated to front), then add the first part after it.
+        // This effectively rotates the list to the right by 'amount'.
+
+        int count = data.Count;
+
+        // Step 3
+        List<int> lastPart = data.GetRange(count - amount, amount);
+
+        // Step 4
+        List<int> firstPart = data.GetRange(0, count - amount);
+
+        // Step 5
+        data.Clear();
+
+        // Step 6
+        data.AddRange(lastPart);
+        data.AddRange(firstPart);
     }
 }
